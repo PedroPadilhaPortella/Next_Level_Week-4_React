@@ -58,5 +58,31 @@
     "type": "body",
     "description": "Em pé, gire a cintura o máximo que puder para a esquerda, segure por cinco segundos. Repita para a direita.",
     "amount": 90
+  },
+
+  {
+    "type": "body",
+    "description": "Faça 30 flexões de braço",
+    "amount": 200
+  },
+  {
+    "type": "body",
+    "description": "Faça 15 puxadas na barra fixa",
+    "amount": 200
+  },
+  {
+    "type": "body",
+    "description": "Fique na parada de mão por 1 minuto ou mais",
+    "amount": 200
+  },
+  {
+    "type": "body",
+    "description": "Faça 30 segundos do tuck planche",
+    "amount": 200
+  },
+  {
+    "type": "body",
+    "description": "Faça 30 segundos do tucked front lever",
+    "amount": 200
   }
 ]

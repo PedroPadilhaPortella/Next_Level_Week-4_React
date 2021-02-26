@@ -1,24 +1,43 @@
 import { useContext } from 'react';
 import { ChallengesContext } from '../contexts/ChallengesContext';
+import { CountdownContext } from '../contexts/CountdownContext';
 import styles from '../styles/components/ChallengeBox.module.css';
+import { CompletedChallenges } from './CompletedChalleges';
 
 export function ChallegeBox() {
 
-    const { activeChallenge, resetChallenge } = useContext(ChallengesContext);
+    const { activeChallenge, resetChallenge, completeChallenge } = useContext(ChallengesContext);
+    const { resetCountdown } = useContext(CountdownContext);
+
+    function handleChallengeSucceeded() {
+        completeChallenge();
+        resetCountdown();
+    }
+
+    function handleChallengeFailed() {
+        resetChallenge();
+        resetCountdown();
+    }
 
     return (
         <div className={styles.challegeBoxContainer}>
             { activeChallenge ? (
                 <div className={styles.challegeActive}>
-                    <header>Ganhe {activeChallenge.ammount}xp</header>
+                    <header>Ganhe {activeChallenge.amount}xp</header>
                     <main>
                         <img src={`icons/${activeChallenge.type}.svg`} alt="Body"/>
                         <strong>Novo Desafio</strong>
                         <p>{activeChallenge.description}</p>
                     </main>
                     <footer>
-                        <button type="button" className={styles.challengeFailed} onClick={resetChallenge}>Falhei</button>
-                        <button type="button" className={styles.challengeSucceeded}>Completei</button>
+                        <button type="button" className={styles.challengeFailed} 
+                        onClick={handleChallengeFailed}>
+                            Falhei
+                        </button>
+                        <button type="button" className={styles.challengeSucceeded} 
+                        onClick={handleChallengeSucceeded}>
+                            Completei
+                        </button>
                     </footer>
                 </div>
             ) : (
